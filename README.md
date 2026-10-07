@@ -1,14 +1,53 @@
-# Credit Card Fraud Detection Platform
+# Credit Card Fraud Detection — Production-Ready ML Platform
 
-Advanced company-presentation prototype with chronological validation, cost-sensitive learning, Logistic Regression (LBFGS/SAGA), Random Forest, XGBoost, CatBoost, neural-network optimizer comparison (Adam/RMSprop/SGD), PR-AUC, threshold optimization, SHAP, risk scoring, FastAPI, SQLite logging, Streamlit monitoring and Docker.
+An end-to-end machine learning system for detecting fraudulent credit card transactions using time-aware validation, multiple ML models, optimized decision thresholds, and a production-oriented software architecture.
 
-## Run API
-uvicorn api.main:app --reload
+## Project Overview
 
-## Run dashboard
-streamlit run dashboard/app.py
+Credit card fraud detection is a highly imbalanced binary classification problem where fraudulent transactions represent a very small proportion of total transactions.
 
-## Architecture
-Dataset -> preprocessing -> ML -> threshold -> risk engine -> FastAPI -> SQLite -> Streamlit
+This project develops a complete fraud detection pipeline:
 
-This is an educational prototype. Production financial deployment requires security, authentication, encryption, governance, compliance, drift monitoring and extensive validation.
+- Data preprocessing
+- Chronological train/validation/test splitting
+- Multiple machine learning models
+- Model comparison using PR-AUC and ROC-AUC
+- Validation-based threshold optimization
+- Final evaluation on an untouched test set
+- Model serialization
+- FastAPI backend
+- Streamlit dashboard
+- Prediction logging and monitoring
+
+## Machine Learning Models
+
+The project evaluates:
+
+- Logistic Regression — LBFGS
+- Logistic Regression — SAGA
+- Random Forest
+- XGBoost
+- CatBoost
+
+The final model is selected using validation performance.
+
+## Imbalanced Classification Strategy
+
+SMOTE is **not used** in this project.
+
+The project instead uses:
+
+- Time-aware data splitting
+- Model comparison
+- Precision-Recall evaluation
+- Validation-based threshold optimization
+- Recall/precision trade-off analysis
+
+## Data Splitting
+
+The dataset is divided chronologically:
+
+```text
+70% → Training
+15% → Validation
+15% → Test
