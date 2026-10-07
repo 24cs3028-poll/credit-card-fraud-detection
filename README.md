@@ -608,42 +608,32 @@ Architecture/workflow diagrams
 
 🧭 Example User Workflow
 
-                    ┌──────────────────────┐
-                    │  Transaction Input   │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │   Streamlit UI       │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │     FastAPI API      │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │  Random Forest Model │
-                    └──────────┬───────────┘
-                               │
-                    ┌──────────┴───────────┐
-                    ▼                      ▼
-             Fraud Probability       Classification
-                    │                      │
-                    └──────────┬───────────┘
-                               ▼
-                    ┌──────────────────────┐
-                    │    Risk Level        │
-                    │ LOW / MEDIUM / HIGH  │
-                    │ / CRITICAL           │
-                    └──────────┬───────────┘
-                               │
-                               ▼
-                    ┌──────────────────────┐
-                    │ ALLOW / REVIEW /     │
-                    │ BLOCK                │
-                    └──────────────────────┘
+
+```mermaid
+flowchart TD
+    A["💳 Transaction Input"] --> B["🖥️ Streamlit Dashboard"]
+    B --> C["⚡ FastAPI API"]
+    C --> D["🤖 Random Forest Model"]
+
+    D --> E["📊 Fraud Probability"]
+    D --> F["🏷️ Classification"]
+
+    E --> G["🚦 Risk Assessment"]
+    F --> G
+
+    G --> H{"Risk Level"}
+
+    H -->|LOW| I["✅ ALLOW"]
+    H -->|MEDIUM| J["🔍 REVIEW"]
+    H -->|HIGH| J
+    H -->|CRITICAL| K["🚨 BLOCK / INVESTIGATE"]
+
+    I --> L["📝 Prediction Result"]
+    J --> L
+    K --> L
+
+    L --> M["🗄️ SQLite Audit Log"]
+```
 
 📦 Model Artifacts
 
