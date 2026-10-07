@@ -26,17 +26,20 @@ Credit-card fraud detection is a highly imbalanced classification problem in whi
 
 This project provides a complete workflow for:
 
--Individual transaction fraud analysis
--Large-scale CSV batch prediction
--Machine-learning based fraud probability estimation
--Risk-level classification
--Decision recommendations such as ALLOW, REVIEW, and BLOCK
--REST API inference through FastAPI
--Interactive analysis through Streamlit
--SQLite prediction/audit logging
--Population Stability Index (PSI) monitoring
--Model and threshold information
--API documentation through Swagger/OpenAPI
+- Individual transaction fraud analysis   
+- Large-scale CSV batch prediction   
+- Machine-learning based fraud probability estimation
+- Risk-level classification
+- Decision recommendations such as ALLOW, REVIEW, and BLOCK
+- REST API inference through FastAPI
+- Interactive analysis through Streamlit
+- SQLite prediction/audit logging
+
+- Population Stability Index (PSI) monitoring
+
+- Model and threshold information
+
+- API documentation through Swagger/OpenAPI
 
 The application demonstrates how a trained fraud-detection model can be integrated into a usable ML application rather than remaining only inside a notebook.
 
@@ -44,26 +47,33 @@ The application demonstrates how a trained fraud-detection model can be integrat
 
 🤖 Machine Learning
 
-->Random Forest fraud classification model
-->30 transaction features
-->Fraud probability estimation
-->Configurable classification threshold
-->Serialized model and scaler artifacts
-->Model metadata and version information
-->Chronological 70/15/15 validation split
-->Imbalanced fraud-detection workflow
+- Random Forest fraud classification model
+
+- 30 transaction features
+
+- Fraud probability estimation
+  
+- Configurable classification threshold
+  
+- Serialized model and scaler artifacts
+
+- Model metadata and version information
+
+- Chronological 70/15/15 validation split
+
+- Imbalanced fraud-detection workflow
 
 🔎 Individual Transaction Analysis
 
-The Streamlit dashboard supports single-transaction analysis with:
+The Stream lit dashboard supports single-transaction analysis with:
 
-1.Fraud probability
-2.Fraud / normal classification
-3.Risk-level classification
-4.Decision recommendation
-5.Model information
-6.Classification threshold
-7.API-backed prediction
+1.Fraud probability   
+2.Fraud / normal classification    
+3.Risk-level classification   
+4.Decision recommendation   
+5.Model information   
+6.Classification threshold   
+7.API-backed prediction   
 
 📦 Batch Transaction Analysis
 
@@ -89,13 +99,13 @@ The machine-learning inference layer is exposed through REST endpoints for healt
 
 The dashboard provides a user-friendly interface for:
 
-1.Individual transaction prediction
-2.Batch prediction
-3.Prediction results
-4.Analytics
-5.Model information
-6.Risk interpretation
-7.Drift monitoring
+1.Individual transaction prediction  
+2.Batch prediction   
+3.Prediction results   
+4.Analytics   
+5.Model information   
+6.Risk interpretation   
+7.Drift monitoring   
 
 🗄️ SQLite Audit Database
 
@@ -117,26 +127,26 @@ Population Stability Index (PSI) monitoring helps identify changes in transactio
 
 Architecture Components
 
-Component
-Responsibility
-Streamlit
-Interactive dashboard and user interface
-FastAPI
-ML inference API
-Random Forest
-Fraud classification
-Scikit-learn
-Machine-learning framework
-Joblib
-Model/scaler serialization
-SQLite
-Local prediction/audit storage
-PSI
-Distribution/drift monitoring
-Pandas / NumPy
-Data processing
-Uvicorn
-FastAPI application server
+Component   
+Responsibility    
+Streamlit   
+Interactive dashboard and user interface    
+FastAPI    
+ML inference API    
+Random Forest     
+Fraud classification    
+Scikit-learn    
+Machine-learning framework   
+Joblib    
+Model/scaler serialization    
+SQLite    
+Local prediction/audit storage    
+PSI     
+Distribution/drift monitoring    
+Pandas / NumPy    
+Data processing     
+Uvicorn   
+FastAPI application server    
 
 🔄 Machine Learning Workflow
 
@@ -175,11 +185,11 @@ End-to-End Flow
 
 Feature Set
 
-Time
+Time : (      
 V1, V2, V3, V4, V5, V6, V7, V8, V9, V10
 V11, V12, V13, V14, V15, V16, V17, V18, V19, V20
-V21, V22, V23, V24, V25, V26, V27, V28
-Amount
+V21, V22, V23, V24, V25, V26, V27, V28       )
+
 
 🚦 Risk Classification
 
@@ -224,14 +234,14 @@ For fraud detection, accuracy alone can be misleading because the dataset is hig
 
 Useful evaluation measures include:
 
-->Precision
-->Recall
-->F1-score
-->ROC-AUC
-->PR-AUC
-->Confusion matrix
-->False-positive rate
-->False-negative rate
+->Precision   
+->Recall    
+->F1-score    
+->ROC-AUC    
+->PR-AUC   
+->Confusion matrix    
+->False-positive rate    
+->False-negative rate   
 
 The operating threshold should be selected according to the business cost of missed fraud versus unnecessary transaction review.
 
@@ -239,11 +249,13 @@ The operating threshold should be selected according to the business cost of mis
 
 Dashboard
 
+
 <img width="1283" height="420" alt="image" src="https://github.com/user-attachments/assets/98eef775-48d6-4836-9870-ad1eb4f39b55" />
 
 
 
 Individual Transaction Prediction
+
 
 
 <img width="1214" height="582" alt="image" src="https://github.com/user-attachments/assets/704e8855-048f-4be9-88c0-83313208b529" />
@@ -254,11 +266,13 @@ Individual Transaction Prediction
 
 Batch Analysis
 
+
 <img width="1218" height="466" alt="image" src="https://github.com/user-attachments/assets/98930e92-ee51-4057-bc47-69360e1c80e6" />
 
 
 
 Dashboard Analytics
+
 
 <img width="1526" height="476" alt="image" src="https://github.com/user-attachments/assets/4d13155a-1e2c-49e5-9d51-39ac2903f448" />
 
@@ -268,12 +282,14 @@ Dashboard Analytics
 
 Drift Monitoring
 
+
 <img width="1589" height="389" alt="image" src="https://github.com/user-attachments/assets/aeb7ee1c-7009-4d60-86bd-1c25af7fb8a2" />
 
 
 
 
 FastAPI Swagger Documentation
+
 
 <img width="1267" height="901" alt="image" src="https://github.com/user-attachments/assets/288eb6ba-38cc-4578-a7b9-c75cd2a5b53a" />
 <img width="1265" height="828" alt="image" src="https://github.com/user-attachments/assets/e2a04d3e-36f6-4a8f-a844-a286ee96f3d8" />
@@ -359,11 +375,11 @@ database/fraud_predictions.db
 
 Typical information can include:
 
--> Prediction result
--> Fraud probability
--> Risk level
--> Decision
--> Timestamp
+-> Prediction result   
+-> Fraud probability    
+-> Risk level    
+-> Decision    
+-> Timestamp     
 
 For production, SQLite would generally be replaced with a managed relational database appropriate for the expected workload.
 
@@ -403,11 +419,11 @@ pip install -r requirements.txt
 Open PowerShell 1:
 .\venv\Scripts\python.exe -m uvicorn api.main:app --reload
 
-FastAPI:
-http://127.0.0.1:8000
+ FastAPI:
+ http://127.0.0.1:8000
 
-Swagger:
-http://127.0.0.1:8000/docs
+ Swagger:
+ http://127.0.0.1:8000/docs
 
 5. Start Streamlit
 
@@ -432,39 +448,36 @@ Container ports and startup commands should match the current Dockerfile.
 
 📁 Project Structure
 
-credit-card-fraud-detection/
-│
-├── api/
-│   └── main.py
-│
-├── dashboard/
-│   ├── app.py
-│   └── app_backup.py
-│
-├── database/
-│   └── fraud_predictions.db
-│
-├── screenshots/
-│   ├── dashboard.png
-│   ├── prediction-result.png
-│   ├── batch-analysis.png
-│   ├── analytics.png
-│   ├── drift-monitoring.png
-│   ├── api-swagger.png
-│   ├── confusion_matrix.png
-│   ├── roc_auc.png
-│   ├── precision_recall.png
-│   └── feature_importance.png
-│
-├── fraud_model.pkl
-├── fraud_scaler.pkl
-├── model_metadata.json
-├── requirements.txt
-├── Dockerfile
-├── README.md
-├── .gitignore
-│
-└── Credit_Card_Fraud_Detection_Production_Ready (1).ipynb
+```mermaid
+flowchart TD
+    ROOT["💳 Credit Card Fraud Detection"]
+
+    ROOT --> API["📡 API Layer"]
+    API --> MAIN["api/main.py"]
+
+    ROOT --> DASH["🖥️ Dashboard"]
+    DASH --> APP["dashboard/app.py"]
+
+    ROOT --> DB["🗄️ Database"]
+    DB --> SQLITE["fraud_predictions.db"]
+
+    ROOT --> ML["🤖 ML Artifacts"]
+    ML --> MODEL["fraud_model.pkl"]
+    ML --> SCALER["fraud_scaler.pkl"]
+    ML --> META["model_metadata.json"]
+
+    ROOT --> VIS["📊 Visuals"]
+    VIS --> SHOTS["screenshots/"]
+
+    ROOT --> CONFIG["⚙️ Configuration"]
+    CONFIG --> REQ["requirements.txt"]
+    CONFIG --> DOCKER["Dockerfile"]
+    CONFIG --> GIT[".gitignore"]
+
+    ROOT --> DOCS["📚 Documentation"]
+    DOCS --> README["README.md"]
+    DOCS --> NOTEBOOK["Jupyter Notebook"]
+```
 
 🔐 Security & Production Considerations
 
