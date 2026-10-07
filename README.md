@@ -1,4 +1,13 @@
-💳 Credit Card Fraud Detection — ML & API Platform
+                                                   💳 Credit Card Fraud Detection — ML & API Platform
+
+
+
+
+
+
+
+
+
 
 
 
@@ -11,6 +20,7 @@ Project status: Educational / portfolio-ready fraud-detection prototype. It demo
 📌 Project Overview
 
 Credit-card fraud detection is a highly imbalanced classification problem in which fraudulent transactions represent a very small fraction of total transactions.
+
 
 This project provides a complete workflow for:
 
@@ -126,35 +136,15 @@ Prediction activity can be recorded in a local SQLite database for later analysi
 
 Population Stability Index (PSI) monitoring helps identify changes in transaction-data distributions.
 
-PSI Value
 
-Interpretation
+<img width="672" height="254" alt="image" src="https://github.com/user-attachments/assets/2c0893c6-3e48-4aaf-8164-f5e0e2f618d8" />
 
-< 0.10
 
-🟢 Stable
-
-0.10 – < 0.25
-
-🟡 Warning
-
-≥ 0.25
-
-🔴 Critical
 
 🏗️ System Architecture
 
-flowchart LR
-    A[Transaction Data] --> B[Streamlit Dashboard]
-    B --> C[FastAPI]
-    C --> D[Random Forest Model]
-    D --> E[Fraud Probability]
-    E --> F[Risk Classification]
-    F --> G[ALLOW / REVIEW / BLOCK]
-    B --> H[(SQLite Database)]
-    B --> I[PSI Drift Monitoring]
-    C --> J[Batch Prediction]
-    J --> D
+<img width="672" height="254" alt="image" src="https://github.com/user-attachments/assets/834d86a0-0bae-4ad8-94a1-c2f213fdfbcc" />
+
 
 Architecture Components
 
@@ -200,94 +190,37 @@ FastAPI application server
 
 🔄 Machine Learning Workflow
 
-flowchart LR
-    A[Transaction Dataset] --> B[Preprocessing]
-    B --> C[Feature Preparation]
-    C --> D[Chronological Split]
-    D --> E[Random Forest Training]
-    E --> F[Model Evaluation]
-    F --> G[Threshold Selection]
-    G --> H[Model Serialization]
-    H --> I[FastAPI]
-    I --> J[Streamlit]
+<img width="672" height="254" alt="image" src="https://github.com/user-attachments/assets/3fc08e9e-ec8e-4dbc-bc36-2212309925d4" />
 
 End-to-End Flow
 
-Load transaction data.
+1. Load transaction data.
+2. Separate features and target.
+3. Prepare the 30 model features.
+4. Perform chronological train/validation/test splitting.
+5. Train the Random Forest classifier.
+6. Evaluate the model.
+7. Apply the configured fraud threshold.
+8. Save model artifacts.
+9. Load artifacts in FastAPI.
+10. Expose prediction endpoints.
+11. Connect Streamlit to the API.
+12. Store prediction information in SQLite.
+13. Monitor distribution changes using PSI.
 
-Separate features and target.
-
-Prepare the 30 model features.
-
-Perform chronological train/validation/test splitting.
-
-Train the Random Forest classifier.
-
-Evaluate the model.
-
-Apply the configured fraud threshold.
-
-Save model artifacts.
-
-Load artifacts in FastAPI.
-
-Expose prediction endpoints.
-
-Connect Streamlit to the API.
-
-Store prediction information in SQLite.
-
-Monitor distribution changes using PSI.
+    
 
 🧠 Model Information
+| Property                 | Value                        |
+| ------------------------ | ---------------------------- |
+| Model                    | Random Forest                |
+| Model Version            | 1.0.0                        |
+| Target                   | `Class`                      |
+| Features                 | 30                           |
+| Classification Threshold | 0.14                         |
+| SMOTE                    | Not used                     |
+| Validation               | Chronological 70/15/15 split |
 
-Property
-
-Value
-
-Model
-
-Random Forest
-
-Model Version
-
-1.0.0
-
-Target
-
-Class
-
-Features
-
-30
-
-Feature Range
-
-Time, V1–V28, Amount
-
-Fraud Threshold
-
-0.14
-
-SMOTE
-
-Not used
-
-Validation Strategy
-
-Chronological 70/15/15 split
-
-Model Artifact
-
-fraud_model.pkl
-
-Scaler Artifact
-
-fraud_scaler.pkl
-
-Metadata
-
-model_metadata.json
 
 Feature Set
 
@@ -299,37 +232,17 @@ Amount
 
 🚦 Risk Classification
 
-Fraud Probability
 
-Risk Level
-
-< 0.10
-
-🟢 LOW
-
-0.10 – < 0.30
-
-🟡 MEDIUM
-
-0.30 – < 0.70
-
-🟠 HIGH
-
-≥ 0.70
-
-🔴 CRITICAL
-
-The fraud classification and probability can be converted into a decision recommendation such as:
-
-ALLOW
-REVIEW
-BLOCK
-
-The exact business decision logic should be validated and tuned for the intended real-world use case before deployment.
+| Fraud Probability | Risk Level |
+|---:|---|
+| `< 0.10` | 🟢 LOW |
+| `0.10 – < 0.30` | 🟡 MEDIUM |
+| `0.30 – < 0.70` | 🟠 HIGH |
+| `≥ 0.70` | 🔴 CRITICAL |
 
 📊 Model Performance
 
-Important: Add the actual graphs produced by your notebook/model evaluation here. Do not use fabricated accuracy, precision, recall, F1, ROC-AUC, or other performance values.
+
 
 Confusion Matrix
 
