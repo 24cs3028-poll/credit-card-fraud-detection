@@ -1,4 +1,6 @@
-                                                   💳 Credit Card Fraud Detection — ML & API Platform
+                                        💳 Credit Card Fraud Detection — ML & API Platform
+
+
 
 
 
@@ -24,27 +26,17 @@ Credit-card fraud detection is a highly imbalanced classification problem in whi
 
 This project provides a complete workflow for:
 
-Individual transaction fraud analysis
-
-Large-scale CSV batch prediction
-
-Machine-learning based fraud probability estimation
-
-Risk-level classification
-
-Decision recommendations such as ALLOW, REVIEW, and BLOCK
-
-REST API inference through FastAPI
-
-Interactive analysis through Streamlit
-
-SQLite prediction/audit logging
-
-Population Stability Index (PSI) monitoring
-
-Model and threshold information
-
-API documentation through Swagger/OpenAPI
+-Individual transaction fraud analysis
+-Large-scale CSV batch prediction
+-Machine-learning based fraud probability estimation
+-Risk-level classification
+-Decision recommendations such as ALLOW, REVIEW, and BLOCK
+-REST API inference through FastAPI
+-Interactive analysis through Streamlit
+-SQLite prediction/audit logging
+-Population Stability Index (PSI) monitoring
+-Model and threshold information
+-API documentation through Swagger/OpenAPI
 
 The application demonstrates how a trained fraud-detection model can be integrated into a usable ML application rather than remaining only inside a notebook.
 
@@ -52,39 +44,26 @@ The application demonstrates how a trained fraud-detection model can be integrat
 
 🤖 Machine Learning
 
-Random Forest fraud classification model
-
-30 transaction features
-
-Fraud probability estimation
-
-Configurable classification threshold
-
-Serialized model and scaler artifacts
-
-Model metadata and version information
-
-Chronological 70/15/15 validation split
-
-Imbalanced fraud-detection workflow
+->Random Forest fraud classification model
+->30 transaction features
+->Fraud probability estimation
+->Configurable classification threshold
+->Serialized model and scaler artifacts
+->Model metadata and version information
+->Chronological 70/15/15 validation split
+->Imbalanced fraud-detection workflow
 
 🔎 Individual Transaction Analysis
 
 The Streamlit dashboard supports single-transaction analysis with:
 
-Fraud probability
-
-Fraud / normal classification
-
-Risk-level classification
-
-Decision recommendation
-
-Model information
-
-Classification threshold
-
-API-backed prediction
+1.Fraud probability
+2.Fraud / normal classification
+3.Risk-level classification
+4.Decision recommendation
+5.Model information
+6.Classification threshold
+7.API-backed prediction
 
 📦 Batch Transaction Analysis
 
@@ -92,19 +71,15 @@ The application supports CSV-based batch prediction.
 
 Large datasets can be processed in chunks to reduce memory/API request pressure and provide progress feedback.
 
-CSV Dataset
-    ↓
-Chunked Upload
-    ↓
-FastAPI Prediction
-    ↓
-Random Forest
-    ↓
-Fraud Probabilities
-    ↓
-Risk Classification
-    ↓
-Prediction Results
+```mermaid
+flowchart TD
+    A[CSV Dataset] --> B[Chunked Upload]
+    B --> C[FastAPI Prediction]
+    C --> D[Random Forest]
+    D --> E[Fraud Probabilities]
+    E --> F[Risk Classification]
+    F --> G[Prediction Results]
+```
 
 ⚡ FastAPI Backend
 
@@ -114,19 +89,13 @@ The machine-learning inference layer is exposed through REST endpoints for healt
 
 The dashboard provides a user-friendly interface for:
 
-Individual transaction prediction
-
-Batch prediction
-
-Prediction results
-
-Analytics
-
-Model information
-
-Risk interpretation
-
-Drift monitoring
+1.Individual transaction prediction
+2.Batch prediction
+3.Prediction results
+4.Analytics
+5.Model information
+6.Risk interpretation
+7.Drift monitoring
 
 🗄️ SQLite Audit Database
 
@@ -149,43 +118,24 @@ Population Stability Index (PSI) monitoring helps identify changes in transactio
 Architecture Components
 
 Component
-
 Responsibility
-
 Streamlit
-
 Interactive dashboard and user interface
-
 FastAPI
-
 ML inference API
-
 Random Forest
-
 Fraud classification
-
 Scikit-learn
-
 Machine-learning framework
-
 Joblib
-
 Model/scaler serialization
-
 SQLite
-
 Local prediction/audit storage
-
 PSI
-
 Distribution/drift monitoring
-
 Pandas / NumPy
-
 Data processing
-
 Uvicorn
-
 FastAPI application server
 
 🔄 Machine Learning Workflow
@@ -245,6 +195,7 @@ Amount
 
 
 
+
 Confusion Matrix
 
 <img width="648" height="651" alt="image" src="https://github.com/user-attachments/assets/71cb4e1a-3bcc-4fd9-9a10-d0c63ea82799" />
@@ -273,21 +224,14 @@ For fraud detection, accuracy alone can be misleading because the dataset is hig
 
 Useful evaluation measures include:
 
-Precision
-
-Recall
-
-F1-score
-
-ROC-AUC
-
-PR-AUC
-
-Confusion matrix
-
-False-positive rate
-
-False-negative rate
+->Precision
+->Recall
+->F1-score
+->ROC-AUC
+->PR-AUC
+->Confusion matrix
+->False-positive rate
+->False-negative rate
 
 The operating threshold should be selected according to the business cost of missed fraud versus unnecessary transaction review.
 
@@ -335,93 +279,21 @@ FastAPI Swagger Documentation
 <img width="1265" height="828" alt="image" src="https://github.com/user-attachments/assets/e2a04d3e-36f6-4a8f-a844-a286ee96f3d8" />
 
 
-
-🔎 Individual Prediction
-
-A single transaction can be submitted through the Streamlit dashboard.
-
-Fraud Probability
-        ↓
-Fraud / Normal
-        ↓
-Risk Level
-        ↓
-Decision
-
-Example presentation:
-
-Fraud Probability: 0.03
-Classification: NORMAL
-Risk Level: LOW
-Decision: ALLOW
-
-The exact values depend on the submitted transaction.
-
-📦 Batch Prediction
-
-The application supports CSV-based batch prediction for large transaction datasets.
-
-Large datasets are processed in chunks rather than sending the entire file as one API request. This helps reduce HTTP request size, memory pressure, API timeout risk, and dashboard freezing.
-
-The interface can also display processing progress while the prediction job is running.
-
-Expected Dataset Structure
-
-The model expects:
-
-Time
-V1 ... V28
-Amount
-
-If a Class column is present, it can be used for evaluation/analysis where supported.
-
 ⚡ FastAPI API
 
 The FastAPI backend provides the machine-learning inference layer.
 
-Available Endpoints
+### Available Endpoints
 
-Method
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/` | API information |
+| GET | `/health` | Backend health check |
+| GET | `/model-info` | Model metadata |
+| GET | `/example` | Example transaction |
+| POST | `/predict` | Single transaction prediction |
+| POST | `/predict/batch` | Batch transaction prediction |
 
-Endpoint
-
-Description
-
-GET
-
-/
-
-API information
-
-GET
-
-/health
-
-Backend health check
-
-GET
-
-/model-info
-
-Model metadata
-
-GET
-
-/example
-
-Example transaction
-
-POST
-
-/predict
-
-Single transaction prediction
-
-POST
-
-/predict/batch
-
-Batch transaction prediction
 
 Interactive Swagger Documentation
 
@@ -487,33 +359,16 @@ database/fraud_predictions.db
 
 Typical information can include:
 
-Prediction result
-
-Fraud probability
-
-Risk level
-
-Decision
-
-Timestamp
+-> Prediction result
+-> Fraud probability
+-> Risk level
+-> Decision
+-> Timestamp
 
 For production, SQLite would generally be replaced with a managed relational database appropriate for the expected workload.
 
-📈 Model & Data Drift Monitoring
 
-The application includes PSI-based monitoring to identify changes in transaction-data distributions.
 
-PSI < 0.10
-    ↓
-Stable
-
-0.10 ≤ PSI < 0.25
-    ↓
-Warning
-
-PSI ≥ 0.25
-    ↓
-Critical
 
 Why Drift Monitoring Matters
 
@@ -521,60 +376,45 @@ A fraud model can become less effective when transaction behavior changes.
 
 Potential causes include:
 
-New transaction patterns
-
-Changes in customer behavior
-
-Changes in merchant behavior
-
-New fraud strategies
-
-Data pipeline changes
-
-Feature distribution changes
+- New transaction patterns
+- Changes in customer behavior
+- Changes in merchant behavior
+- New fraud strategies
+- Data pipeline changes
+- Feature distribution changes
 
 PSI can act as an early-warning signal for investigation and potential model retraining.
 
 🧪 Quick Demo
 
 1. Clone the Repository
-
 git clone https://github.com/24cs3028-poll/credit-card-fraud-detection.git
 cd credit-card-fraud-detection
 
 2. Create/Activate the Virtual Environment
-
-Windows PowerShell
-
+Windows PowerShell:
 python -m venv venv
 .\venv\Scripts\Activate.ps1
 
 3. Install Dependencies
-
 pip install -r requirements.txt
 
 4. Start FastAPI
-
 Open PowerShell 1:
-
 .\venv\Scripts\python.exe -m uvicorn api.main:app --reload
 
 FastAPI:
-
 http://127.0.0.1:8000
 
 Swagger:
-
 http://127.0.0.1:8000/docs
 
 5. Start Streamlit
 
 Open PowerShell 2:
-
 .\venv\Scripts\python.exe -m streamlit run dashboard\app.py
 
 Dashboard:
-
 http://localhost:8501
 
 🐳 Docker
@@ -632,45 +472,26 @@ This repository is an educational/portfolio implementation.
 
 A real financial fraud-detection platform would require additional controls, including:
 
-HTTPS/TLS
-
-Authentication
-
-Authorization / RBAC
-
-API rate limiting
-
-Secure secrets management
-
-Input validation
-
-Secure model artifact storage
-
-Production database
-
-Encryption
-
-Audit logging
-
-Monitoring and alerting
-
-High availability
-
-Load testing
-
-Disaster recovery
-
-Model versioning
-
-Automated retraining
-
-Data privacy controls
-
-Regulatory and compliance review
-
-Human review workflows
-
-False-positive management
+-HTTPS/TLS
+- Authentication
+- Authorization / RBAC
+- API rate limiting
+- Secure secrets management
+- Input validation
+- Secure model artifact storage
+- Production database
+- Encryption
+- Audit logging
+- Monitoring and alerting
+- High availability
+- Load testing
+- Disaster recovery
+- Model versioning
+- Automated retraining
+- Data privacy controls
+- Regulatory and compliance review
+- Human review workflows
+- False-positive management
 
 No production banking or payment-security guarantees should be inferred from this project.
 
@@ -682,58 +503,27 @@ It is not a complete production banking system.
 
 Potential limitations include:
 
-Local SQLite database
-
-Local model artifacts
-
-No built-in authentication layer
-
-No enterprise secrets-management system
-
-No streaming transaction infrastructure
-
-No guaranteed high availability
-
-No production-scale distributed inference
-
-No automated model retraining pipeline
-
-No complete regulatory/compliance implementation
-
-Limited explainability compared with dedicated XAI systems
-
-Model performance depends on the underlying training data
-
-Threshold selection requires business-specific validation
+- Local SQLite database
+- Local model artifacts
+- No built-in authentication layer
+- No enterprise secrets-management system
+- No streaming transaction infrastructure
+- No guaranteed high availability
+- No production-scale distributed inference
+- No automated model retraining pipeline
+- No complete regulatory/compliance implementation
+- Limited explainability compared with dedicated XAI systems
+- Model performance depends on the underlying training data
+- Threshold selection requires business-specific validation
 
 🚀 Future Improvements
 
 Streaming Fraud Detection
-
-Integrate real-time transaction streams using technologies such as:
-
-Kafka / Redis / Cloud Streaming
-
 Production Database
-
-Replace local SQLite with:
-
-PostgreSQL / Managed SQL Database
-
 Model Explainability
-
-Add SHAP or other explainability techniques to show why a transaction was considered suspicious.
-
 Authentication & Authorization
-
-Add:
-
-JWT / OAuth2 / RBAC
-
-for controlled API and dashboard access.
-
 Automated Retraining
-
+```text
 New Data
    ↓
 Validation
@@ -745,39 +535,31 @@ Evaluation
 Approval
    ↓
 Model Deployment
+```
 
 Advanced Monitoring
 
 Add:
 
-Data-quality monitoring
-
-Model-performance monitoring
-
-Drift alerts
-
-Prediction-volume monitoring
-
-Latency monitoring
-
-Error-rate monitoring
+- Data-quality monitoring
+- Model-performance monitoring
+- Drift alerts
+- Prediction-volume monitoring
+- Latency monitoring
+- Error-rate monitoring
 
 CI/CD
-
 Introduce automated:
 
-Testing
-
-Linting
-
-Model validation
-
-Docker builds
-
-Deployment
+- Testing
+- Linting
+- Model validation
+- Docker builds
+- Deployment
 
 Scalable Deployment
 
+```text
 Load Balancer
       ↓
 FastAPI Instances
@@ -787,67 +569,28 @@ Model Serving
 Production Database
       ↓
 Monitoring / Alerting
+```
 
 🧰 Technology Stack
 
-Technology
+| Technology | Purpose |
+|---|---|
+| Python | Core programming language |
+| Pandas | Data processing |
+| NumPy | Numerical operations |
+| Scikit-learn | Machine learning |
+| Random Forest | Fraud classification |
+| Joblib | Model serialization |
+| FastAPI | REST API |
+| Uvicorn | API server |
+| Streamlit | Interactive dashboard |
+| SQLite | Local audit/prediction database |
+| Docker | Containerization |
+| Git | Version control |
+| GitHub | Source-code hosting |
+| Mermaid | Architecture/workflow diagrams |
 
-Purpose
-
-Python
-
-Core programming language
-
-Pandas
-
-Data processing
-
-NumPy
-
-Numerical operations
-
-Scikit-learn
-
-Machine learning
-
-Random Forest
-
-Fraud classification
-
-Joblib
-
-Model serialization
-
-FastAPI
-
-REST API
-
-Uvicorn
-
-API server
-
-Streamlit
-
-Interactive dashboard
-
-SQLite
-
-Local audit/prediction database
-
-Docker
-
-Containerization
-
-Git
-
-Version control
-
-GitHub
-
-Source-code hosting
-
-Mermaid
-
+---
 Architecture/workflow diagrams
 
 🧭 Example User Workflow
@@ -896,42 +639,31 @@ fraud_scaler.pkl
 model_metadata.json
 
 fraud_model.pkl
-
 Serialized Random Forest model.
 
 fraud_scaler.pkl
-
 Serialized preprocessing/scaling artifact used by the inference pipeline.
 
 model_metadata.json
-
 Stores model-related metadata such as:
 
-Model name
-
-Version
-
-Feature information
-
-Target
-
-Threshold
-
-Validation information
+- Model name
+- Version
+- Feature information
+- Target
+- Threshold
+- Validation information
 
 🧪 Reproducibility
 
 For consistent local execution:
 
-Use the provided requirements.txt.
+1. Use the provided `requirements.txt`.
+2. Use the provided model artifacts.
+3. Keep the expected feature names unchanged.
+4. Run FastAPI before using API-backed dashboard prediction.
+5. Ensure model and scaler files are available in the expected project location.
 
-Use the provided model artifacts.
-
-Keep the expected feature names unchanged.
-
-Run FastAPI before using API-backed dashboard prediction.
-
-Ensure model and scaler files are available in the expected project location.
 
 📝 Dataset Notes
 
@@ -947,45 +679,30 @@ Never upload confidential, personally identifiable, or regulated financial infor
 
 This project demonstrates practical skills in:
 
-Fraud classification
-
-Imbalanced classification awareness
-
-Model training and serialization
-
-API-based model serving
-
-Interactive ML dashboards
-
-Batch inference
-
-Database logging
-
-Model/data monitoring
-
-Threshold-based decision systems
-
-Software integration
-
-Docker/containerization
-
-Git/GitHub project management
+- Fraud classification
+- Imbalanced classification awareness
+- Model training and serialization
+- API-based model serving
+- Interactive ML dashboards
+- Batch inference
+- Database logging
+- Model/data monitoring
+- Threshold-based decision systems
+- Software integration
+- Docker/containerization
+- Git/GitHub project management
 
 📚 Educational Purpose
 
 This project is intended for:
 
-Machine-learning portfolio demonstration
+- Machine-learning portfolio demonstration
+- Academic projects
+- Learning ML deployment
+- API integration practice
+- Streamlit application development
+- Fraud-detection experimentation
 
-Academic projects
-
-Learning ML deployment
-
-API integration practice
-
-Streamlit application development
-
-Fraud-detection experimentation
 
 It should not be treated as financial, banking, security, legal, or compliance advice.
 
@@ -1001,21 +718,14 @@ https://github.com/24cs3028-poll/credit-card-fraud-detection
 
 This project uses the Python data-science and machine-learning ecosystem, including:
 
-Pandas
-
-NumPy
-
-Scikit-learn
-
-FastAPI
-
-Streamlit
-
-SQLite
-
-Joblib
-
-Docker
+- Pandas
+- NumPy
+- Scikit-learn
+- FastAPI
+- Streamlit
+- SQLite
+- Joblib
+- Docker
 
 📄 License
 
