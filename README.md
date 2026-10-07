@@ -1,53 +1,99 @@
-# Credit Card Fraud Detection — Production-Ready ML Platform
+# 💳 Credit Card Fraud Detection — ML & API Platform
 
-An end-to-end machine learning system for detecting fraudulent credit card transactions using time-aware validation, multiple ML models, optimized decision thresholds, and a production-oriented software architecture.
+An end-to-end machine learning application for detecting potentially fraudulent
+credit-card transactions using a trained **Random Forest classifier**.
 
-## Project Overview
+The project combines machine learning, REST APIs, interactive dashboards,
+batch prediction, audit logging, and model monitoring into a single
+application.
 
-Credit card fraud detection is a highly imbalanced binary classification problem where fraudulent transactions represent a very small proportion of total transactions.
+---
 
-This project develops a complete fraud detection pipeline:
+## 🚀 Project Overview
 
-- Data preprocessing
-- Chronological train/validation/test splitting
-- Multiple machine learning models
-- Model comparison using PR-AUC and ROC-AUC
-- Validation-based threshold optimization
-- Final evaluation on an untouched test set
-- Model serialization
-- FastAPI backend
-- Streamlit dashboard
-- Prediction logging and monitoring
+Credit card fraud detection is a highly imbalanced classification problem
+where fraudulent transactions represent only a small fraction of total
+transactions.
 
-## Machine Learning Models
+This project provides an application for:
 
-The project evaluates:
+- 🔍 Individual transaction fraud analysis
+- 📁 Large-scale batch transaction prediction
+- 🤖 Machine-learning based fraud classification
+- ⚡ FastAPI REST prediction service
+- 📊 Interactive Streamlit dashboard
+- 🗄️ SQLite prediction audit database
+- 📡 Population Stability Index (PSI) drift monitoring
+- 📈 Prediction analytics and risk analysis
+- 🐳 Docker-based deployment support
 
-- Logistic Regression — LBFGS
-- Logistic Regression — SAGA
-- Random Forest
-- XGBoost
-- CatBoost
+The application is designed as an **educational and portfolio-oriented
+fraud detection prototype** demonstrating how a machine-learning model can
+be integrated into a complete software application.
 
-The final model is selected using validation performance.
+---
 
-## Imbalanced Classification Strategy
+# ✨ Key Features
 
-SMOTE is **not used** in this project.
+## 🤖 Machine Learning
 
-The project instead uses:
+- Random Forest fraud classification model
+- 30 transaction features
+- Fraud probability estimation
+- Configurable classification threshold
+- Model metadata management
+- Serialized model and scaler artifacts
 
-- Time-aware data splitting
-- Model comparison
-- Precision-Recall evaluation
-- Validation-based threshold optimization
-- Recall/precision trade-off analysis
+## 🔍 Individual Transaction Analysis
 
-## Data Splitting
+Analyze a single transaction and receive:
 
-The dataset is divided chronologically:
+- Fraud probability
+- Fraud / Normal classification
+- Risk level
+- Decision recommendation
+- Model information
+- Classification threshold
+
+### Risk levels
+
+| Fraud Probability | Risk Level |
+|---:|---|
+| `< 0.10` | 🟢 LOW |
+| `0.10 – < 0.30` | 🟡 MEDIUM |
+| `0.30 – < 0.70` | 🟠 HIGH |
+| `≥ 0.70` | 🔴 CRITICAL |
+
+---
+
+## 📁 Batch Transaction Analysis
+
+The application supports CSV-based batch prediction.
+
+Large datasets are processed through the **FastAPI backend in chunks** to
+avoid oversized HTTP requests and improve reliability.
+
+The system can process tens of thousands of transactions while displaying
+prediction progress in the Streamlit interface.
+
+---
+
+## ⚡ FastAPI Backend
+
+The machine-learning model is exposed through a REST API.
+
+### Available endpoints
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/` | API information |
+| `GET` | `/health` | Backend health check |
+| `GET` | `/model-info` | Model metadata |
+| `GET` | `/example` | Example transaction |
+| `POST` | `/predict` | Single transaction prediction |
+| `POST` | `/predict/batch` | Batch transaction prediction |
+
+Interactive Swagger documentation:
 
 ```text
-70% → Training
-15% → Validation
-15% → Test
+http://127.0.0.1:8000/docs
