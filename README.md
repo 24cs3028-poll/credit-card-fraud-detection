@@ -143,7 +143,7 @@ Population Stability Index (PSI) monitoring helps identify changes in transactio
 
 🏗️ System Architecture
 
-<img width="672" height="254" alt="image" src="https://github.com/user-attachments/assets/834d86a0-0bae-4ad8-94a1-c2f213fdfbcc" />
+<img width="1721" height="517" alt="image" src="https://github.com/user-attachments/assets/1671a231-e8e7-4811-985c-d985ad522dfe" />
 
 
 Architecture Components
@@ -190,7 +190,8 @@ FastAPI application server
 
 🔄 Machine Learning Workflow
 
-<img width="672" height="254" alt="image" src="https://github.com/user-attachments/assets/3fc08e9e-ec8e-4dbc-bc36-2212309925d4" />
+<img width="316" height="676" alt="image" src="https://github.com/user-attachments/assets/3a6330cd-5c65-4754-be1e-60670352dfe4" />
+
 
 End-to-End Flow
 
