@@ -183,6 +183,23 @@ End-to-End Flow
 | Validation               | Chronological 70/15/15 split |
 
 
+## 🎯 Live Prediction Demo
+
+The Streamlit dashboard allows a user to enter transaction details and receive an instant fraud-risk decision.
+
+### Example
+
+**User enters transaction features**
+
+```text
+Transaction Amount: ₹149.50
+Time: 406
+V1: -1.36
+V2: -0.07
+...
+V28: 0.02
+
+
 Feature Set
 
 Time : (      
