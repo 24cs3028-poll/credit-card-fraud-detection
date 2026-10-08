@@ -91,6 +91,7 @@ flowchart TD
     F --> G[Prediction Results]
 ```
 
+
 ⚡ FastAPI Backend
 
 The machine-learning inference layer is exposed through REST endpoints for health checks, model information, examples, single prediction, and batch prediction.
